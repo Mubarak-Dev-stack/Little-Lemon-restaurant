@@ -1,0 +1,113 @@
+@keyframes nav-fade-in {
+    0% {
+        display: none;
+        left: 100%;
+    }
+    1% {
+        display: flex;
+        left: 100%;
+    }
+    100% {
+        display: flex;
+        left: 0;
+    }
+}
+
+@keyframes nav-fade-out {
+    0% {
+        display: flex;
+        left: 0;
+    }
+    99% {
+        display: flex;
+        left: 100%;
+    }
+    100% {
+        display: none;
+        left: 100%;
+    }
+}
+
+.nav__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: nav-fade-out .2s ease-out;
+
+    &[data-open=true] {
+        animation: nav-fade-in .3s ease-out;
+    }
+
+    @media screen and (min-width: 845px) {
+        display: flex;
+        gap: 4px;
+    }
+
+    @media screen and (max-width: 844px) {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        right: 0;
+        left: 100%;
+        border-top: 1px solid var(--primary-color-1);
+        box-shadow: 0 5px 4px 0 rgba(0, 0, 0, .3);
+        background-color: var(--white);
+
+        &[data-open=true] {
+            display: flex;
+            left: 0;
+        }
+    }
+}
+
+.nav__toggle {
+    border: 0;
+    border-radius: var(--global-border-radius);
+    padding: 8px 16px;
+    color: var(--primary-color-1);
+    background-color: var(--white);
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: var(--primary-color-1);
+        background-color: var(--primary-color-2);
+        cursor: pointer;
+    }
+
+    @media screen and (min-width: 844px) {
+        display: none;
+    }
+}
+
+.nav__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+
+    &.active {
+        color: var(--primary-color-1);
+        background-color: var(--primary-color-2);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: var(--white);
+        background-color: var(--primary-color-1);
+    }
+
+    @media screen and (min-width: 845px) {
+        border-radius: var(--global-border-radius);
+        padding: 8px 16px;
+        color: var(--primary-color-1);
+        background-color: var(--white);
+    }
+
+    @media screen and (max-width: 844px) {
+        padding: 16px;
+    }
+}
